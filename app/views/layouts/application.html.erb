@@ -8,8 +8,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice%></p>
-<p class="alert"><%= alert%></p>
 	<header>
 		<nav class="be-red white large-padding">
 			<ul class="no-list row center-xs middle-xs" style="list-style: none">
@@ -22,10 +20,16 @@
 				<li class="col-md">Creditos</li>
 				<li class="col-md">Timbrado</li>
 				<li class="col-md">cRemota</li>
+				<% if user_signed_in? %>
+					<li>						
+					<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+					</li>
+				<%end%>
 			</ul>
 		</nav>
 	</header>
-
+<p class="notice"><%= notice%></p>
+<p class="alert"><%= alert%></p>
 <%= yield %>
 
 </body>
